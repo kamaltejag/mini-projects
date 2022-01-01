@@ -1,20 +1,22 @@
 <?php
-       
+    function encode_secure(inpt){
+       str_replace(['"',"'",':'], "", htmlspecialchars(inpt, ENT_QUOTES))
+    }
     // We are storing the value of a
     if(isset($_REQUEST['a']))
-        $a = $_REQUEST['a'];
+        $a = encode_secure($_REQUEST['a']);
     else
         $a = 0;
     
     /* we are storing value of b */
     if(isset($_REQUEST['b']))
-        $b = $_REQUEST['b'];
+        $b = encode_secure($_REQUEST['b']);
     else
         $b = 0;
 
     /* we are storing value of op */
     if(isset($_REQUEST['op']))
-        $op = $_REQUEST['op'];
+        $op = encode_secure($_REQUEST['op']);
     else
         $op = 0;
 
@@ -54,14 +56,14 @@
                     <label >Enter Value of A</label>
                       
                       
-                    <input type="text" name="a" value="<?php echo $a;?>" class="form-control"  >
+                    <input type="text" name="a" value="<?php echo encode_secure($a);?>" class="form-control"  >
                       
                       
                       
                   </div>
                   <div class="form-group">
                     <label >Enter Value of B</label>
-                    <input type="text" name="b" value="<?php echo $b;?>" class="form-control"  >
+                    <input type="text" name="b" value="<?php echo encode_secure($b);?>" class="form-control"  >
                   </div>
                   <div class="form-group">
                      <label >Operation</label>
@@ -75,7 +77,7 @@
                     
                     <div class="bg-light border p-3 mb-3">
                         <h4> Result</h4>
-                        <h1><?php echo $result; ?></h1>
+                        <h1><?php echo encode_secure($result); ?></h1>
                     </div>
                   
                   <button type="submit" class="btn btn-primary">Submit</button>
