@@ -1,6 +1,6 @@
 <?php
     function encode_secure(inpt){
-       str_replace(['"',"'",':'], "", htmlspecialchars(inpt, ENT_QUOTES))
+       str_replace(['"',"'",':'], "", htmlspecialchars(inpt, ENT_QUOTES));
     }
     // We are storing the value of a
     if(isset($_REQUEST['a']))
